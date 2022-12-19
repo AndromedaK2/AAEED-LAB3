@@ -1,3 +1,6 @@
+// Autor: Creado Por Cristopher Angulo
+// Archivo: Main Cliente para la ejecucion principal
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
