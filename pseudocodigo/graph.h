@@ -40,7 +40,7 @@ insertNode(graph *graph, num adj1, num adj2):void
     graph->adjMatrix[adj2][adj1]
 
 ..Complejidad O(1)
-num adjacentNodes(graph *graph, num vertexA, num vertexB)
+adjacentNodes(graph *graph, num vertexA, num vertexB): num
     IF graph->adjMatrix[vertexA][vertexB] = 1)  THEN
         RETURN 1   
     RETURN 0
