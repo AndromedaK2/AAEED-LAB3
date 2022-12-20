@@ -61,6 +61,7 @@ readFile(char *fileName): graph *
         countLines = countLinesFile(file)
         graph *newGraph <- createEmptyGraph(vertices, edges)
         FOR k <- 0 TO countLines STEP 1
+            readDataOfFile(file, "%d %d", &i, &j)
             newGraph->adjMatrix[i - 1][j - 1] <- 1
             newGraph->adjMatrix[j - 1][i - 1] <- 1      
         closeFile(file)
