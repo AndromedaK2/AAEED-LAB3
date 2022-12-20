@@ -14,14 +14,14 @@ createEmptyGraph(num edges, num vertices): graph *
     i <- 0
     j <- 0
     graph *graphReturn <- allocateMemory
-    adjMatrixReturn <- allocateMemory
+    adjMatrixReturn    <- allocateMemory
     FOR i <- 0 TO edges STEP 1
         adjMatrixReturn[i] <- allocateMemory
         FOR j <- 0 TO edges STEP 1        
             adjMatrixReturn[i][j] <- 0        
     graphReturn->adjMatrix <- adjMatrixReturn
-    graphReturn->edges <- edges
-    graphReturn->vertices <- vertices
+    graphReturn->edges     <- edges
+    graphReturn->vertices  <- vertices
     RETURN (graphReturn)
 
 
@@ -50,7 +50,7 @@ num adjacentNodes(graph *graph, num vertexA, num vertexB)
 readFile(char *fileName): graph *
     file <- fileOpen
     num vertices = 0
-    num edges = 0
+    num edges    = 0
     num i = 0 
     num j = 0
     num k = 0
@@ -67,7 +67,7 @@ readFile(char *fileName): graph *
         RETURN (newGraph)
     
 
-
+..Complejidad O(n)
 getAdjacentVertices(graph *graph, num vertex): linkedList *
     IF vertex > graph->edges THEN
         RETURN NULL
@@ -78,16 +78,16 @@ getAdjacentVertices(graph *graph, num vertex): linkedList *
             insertInit(linkedList, i + 1)
     RETURN (linkedList)
 
-
+..Complejidad O(1)
 getAdjacentVerticesCantity(linkedList *adjacents): num
     RETURN getNumberNodes(adjacents)
 
 
-
-getResults(graph *newgraph, num critic, linkedList *criticalPoints, num *centralPoint, num *isRobust): void
+..Complejidad O(n)
+calculateResults(graph *newgraph, num critic, linkedList *criticalPoints, num *centralPoint, num *isRobust): void
     linkedList *adjacentNodes <- createLinkedListEmpty()
-    adjacentCantity <- 0
-    maxAdjacentCantity <- 0
+    adjacentCantity       <- 0
+    maxAdjacentCantity    <- 0
     criticalPointsCantity <- 0
     i <- 0
     FOR i <- 0 i TO newgraph->edges STEP 1
@@ -98,20 +98,20 @@ getResults(graph *newgraph, num critic, linkedList *criticalPoints, num *central
             criticalPointsCantity++
             IF adjacentCantity > maxAdjacentCantity THEN
                 maxAdjacentCantity <- adjacentCantity
-                centralPoint <- i + 1
+                centralPoint       <- i + 1
         IF criticalPointsCantity = newgraph->vertices THEN
             isRobust <- 1
     freeLinkedList(adjacentNodes)
 
 
-
+..Complejidad O(n)
 showResults(graph *newgraph): void
     linkedList *criticalPoints <- createLinkedListEmpty()
-    critic <- (newgraph->edges - 1) * 0.4
+    critic       <- (newgraph->edges - 1) * 0.4
     centralPoint <- 0
-    isRobust <- 0
+    isRobust     <- 0
 
-    getResults(newgraph, critic, criticalPoints, centralPoint, isRobust)
+    calculateResults(newgraph, critic, criticalPoints, centralPoint, isRobust)
 
     PRINT("Puntos Criticos")
     showLinkedList(criticalPoints)
@@ -129,7 +129,7 @@ showResults(graph *newgraph): void
     freeLinkedList(criticalPoints)
     freeGraph(newgraph)
 
-
+..Complejidad O(n)
 freeGraph(graph *graph): void
     i <- 0
     FOR i <- 0 i TO graph->edges STEP 1    

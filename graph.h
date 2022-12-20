@@ -23,7 +23,7 @@ void freeGraph(graph *graph);
 int adjacentNodes(graph *graph, int vertexA, int vertexB);
 linkedList *getAdjacentVertices(graph *graph, int vertex);
 void showResults(graph *newGraph);
-void getResults(graph *newgraph, int critic, linkedList *criticalPoints, int *centralPoint, int *isRobust);
+void calculateResults(graph *newgraph, int critic, linkedList *criticalPoints, int *centralPoint, int *isRobust);
 
 /// @brief Crear un grafo vacío llenando de ceros, haciendo uso de la matriz de adyacencia.
 /// @param edges 
@@ -173,7 +173,7 @@ int getAdjacentVerticesCantity(linkedList *adjacents)
 /// @param criticalPoints 
 /// @param centralPoint 
 /// @param isRobust 
-void getResults(graph *newgraph, int critic, linkedList *criticalPoints, int *centralPoint, int *isRobust)
+void calculateResults(graph *newgraph, int critic, linkedList *criticalPoints, int *centralPoint, int *isRobust)
 {
     linkedList *adjacentNodes = createLinkedListEmpty();
     int adjacentCantity = 0;
@@ -218,7 +218,7 @@ void showResults(graph *newgraph)
     int centralPoint = 0;
     int isRobust = 0;
 
-    getResults(newgraph, critic, criticalPoints, &centralPoint, &isRobust);
+    calculateResults(newgraph, critic, criticalPoints, &centralPoint, &isRobust);
 
     printf("\n------------------\n");
     printf("\n-------Resultados-----------\n\n");
