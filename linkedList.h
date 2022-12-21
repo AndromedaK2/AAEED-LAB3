@@ -117,7 +117,7 @@ void freeLinkedList(linkedList *linkedList)
 
 /// @brief Obtener numero de nodos de la lista enlazada
 /// @param newlinkedList 
-/// @return 
+/// @return la cantidad de nodos
 int getNumberNodes(linkedList *newlinkedList)
 {
     node *newNode = newlinkedList->init;
